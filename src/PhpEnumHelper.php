@@ -6,7 +6,7 @@ namespace w3lifer\PhpEnumHelper;
 
 trait PhpEnumHelper
 {
-    public static function getName(mixed $value, ?callable $callback = null): string
+    public static function getName(int|self|string $value, ?callable $callback = null): string
     {
         if ($value instanceof self) { // For enums without return type
             $name = $value->name;
