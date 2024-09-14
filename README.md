@@ -12,7 +12,7 @@
 ## Installation
 
 ``` sh
-composer req w3lifer/php-enum-helper
+composer require w3lifer/php-enum-helper
 ```
 
 ## Usage
