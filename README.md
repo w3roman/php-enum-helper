@@ -1,4 +1,4 @@
-# php-enum-helper
+# [php-enum-helper](https://packagist.org/packages/w3lifer/php-enum-helper)
 
 - [Installation](#installation)
 - [Usage](#usage)
