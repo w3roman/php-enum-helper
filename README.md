@@ -20,10 +20,10 @@ composer require w3lifer/php-enum-helper
 ### Methods
 
 ``` php
-public static function getName(mixed $value, ?callable $callback = null): string
-public static function getNames(?callable $callback = null): array
-public static function getValues(): array
-public static function getSelectOptions(?callable $callback = null): array
+public static function getName(mixed $value, ?callable $callback = null): string;
+public static function getNames(?callable $callback = null): array;
+public static function getValues(): array;
+public static function getSelectOptions(?callable $callback = null): array;
 ```
 
 ### Enum without return type
