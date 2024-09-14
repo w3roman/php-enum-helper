@@ -100,7 +100,7 @@ EnumWithStringReturnType::getSelectOptions($callback); // Returns [1 => $callbac
 ### Enum with replacements
 
 ``` php
-enum EnumWithReplacements: string
+enum EnumWithReplacements: int
 {
     use PhpEnumHelper;
 
