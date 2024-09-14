@@ -106,20 +106,20 @@ enum EnumWithReplacements: string
 
     const REPLACEMENTS = ['_' => ' '];
 
-    case Foo_One = 'One';
-    case Bar_Two = 'Two';
+    case Foo_Bar = 1;
+    case Baz_Qux = 2;
 }
 
-EnumWithReplacements::getName('One'); // Returns "Foo One"
-EnumWithReplacements::getName('One', $callback); // Returns $callback("Foo One")
+EnumWithReplacements::getName(1); // Returns "Foo Bar"
+EnumWithReplacements::getName(1, $callback); // Returns $callback("Foo Bar")
 
-EnumWithReplacements::getNames(); // Returns ["Foo One", "Bar Two"]
-EnumWithReplacements::getNames($callback); // Returns [$callback("Foo One"), $callback("Bar Two")]
+EnumWithReplacements::getNames(); // Returns ["Foo Bar", "Baz Qux"]
+EnumWithReplacements::getNames($callback); // Returns [$callback("Foo Bar"), $callback("Baz Qux")]
 
-EnumWithReplacements::getValues(); // Returns ["One", "Two"]
+EnumWithReplacements::getValues(); // Returns [1, 2]
 
-EnumWithReplacements::getSelectOptions(); // Returns ["One" => "Foo One", "Two => "Bar Two"]
-EnumWithReplacements::getSelectOptions($callback); // Returns ["One" => $callback("Foo One"), "Two => $callback("Bar Two")]
+EnumWithReplacements::getSelectOptions(); // Returns [1 => "Foo Bar", 2 => "Baz Qux"]
+EnumWithReplacements::getSelectOptions($callback); // Returns [1 => $callback("Foo Bar"), 2 => $callback("Baz Qux")]
 ```
 
 ## Tests

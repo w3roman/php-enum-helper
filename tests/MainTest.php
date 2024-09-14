@@ -38,11 +38,11 @@ final class MainTest extends TestCase
 
         // EnumWithReplacements
 
-        $this->assertNotSame('Bar Two', EnumWithReplacements::getName('One'));
-        $this->assertSame('Foo One', EnumWithReplacements::getName('One'));
+        $this->assertNotSame('Baz Qux', EnumWithReplacements::getName(1));
+        $this->assertSame('Foo Bar', EnumWithReplacements::getName(1));
 
-        $this->assertNotSame('Foo One Bar', EnumWithReplacements::getName('One', fn (string $name) => $name .= ' Foo'));
-        $this->assertSame('Foo One Bar', EnumWithReplacements::getName('One', fn (string $name) => $name .= ' Bar'));
+        $this->assertNotSame('Baz Qux ☺', EnumWithReplacements::getName(1, fn (string $name) => $name .= ' ☺'));
+        $this->assertSame('Foo Bar ☺', EnumWithReplacements::getName(1, fn (string $name) => $name .= ' ☺'));
     }
 
     public function testGetNames(): void
@@ -73,11 +73,11 @@ final class MainTest extends TestCase
 
         // EnumWithReplacements
 
-        $this->assertNotSame(['Bar Two', 'Foo One',], EnumWithReplacements::getNames());
-        $this->assertSame(['Foo One', 'Bar Two'], EnumWithReplacements::getNames());
+        $this->assertNotSame(['Baz Qux', 'Foo Bar',], EnumWithReplacements::getNames());
+        $this->assertSame(['Foo Bar', 'Baz Qux'], EnumWithReplacements::getNames());
 
-        $this->assertNotSame(['Bar Two Bar', 'Foo One Bar',], EnumWithReplacements::getNames(fn (string $name) => $name .= ' Bar'));
-        $this->assertSame(['Foo One Bar', 'Bar Two Bar'], EnumWithReplacements::getNames(fn (string $name) => $name .= ' Bar'));
+        $this->assertNotSame(['Baz Qux ☺', 'Foo Bar ☺',], EnumWithReplacements::getNames(fn (string $name) => $name .= ' ☺'));
+        $this->assertSame(['Foo Bar ☺', 'Baz Qux ☺'], EnumWithReplacements::getNames(fn (string $name) => $name .= ' ☺'));
     }
 
     public function testGetValues(): void
@@ -99,8 +99,8 @@ final class MainTest extends TestCase
 
         // EnumWithReplacements
 
-        $this->assertNotSame(['Two', 'One'], EnumWithReplacements::getValues());
-        $this->assertSame(['One', 'Two'], EnumWithReplacements::getValues());
+        $this->assertNotSame([2, 1], EnumWithReplacements::getValues());
+        $this->assertSame([1, 2], EnumWithReplacements::getValues());
     }
 
     public function testGetSelectOptions(): void
@@ -131,11 +131,11 @@ final class MainTest extends TestCase
 
         // EnumWithReplacements
 
-        $this->assertNotSame(['Two' => 'Bar Two', 'One' => 'Foo One'], EnumWithReplacements::getSelectOptions());
-        $this->assertSame(['One' => 'Foo One', 'Two' => 'Bar Two'], EnumWithReplacements::getSelectOptions());
+        $this->assertNotSame([2 => 'Baz Qux', 1 => 'Foo Bar'], EnumWithReplacements::getSelectOptions());
+        $this->assertSame([1 => 'Foo Bar', 2 => 'Baz Qux'], EnumWithReplacements::getSelectOptions());
 
-        $this->assertNotSame(['Two' => 'Bar Two Bar', 'One' => 'Foo One Bar'], EnumWithReplacements::getSelectOptions(fn (string $name) => $name .= ' Bar'));
-        $this->assertSame(['One' => 'Foo One Bar', 'Two' => 'Bar Two Bar'], EnumWithReplacements::getSelectOptions(fn (string $name) => $name .= ' Bar'));
+        $this->assertNotSame([2 => 'Baz Qux ☺', 1 => 'Foo Bar ☺'], EnumWithReplacements::getSelectOptions(fn (string $name) => $name .= ' ☺'));
+        $this->assertSame([1 => 'Foo Bar ☺', 2 => 'Baz Qux ☺'], EnumWithReplacements::getSelectOptions(fn (string $name) => $name .= ' ☺'));
     }
 }
 
@@ -163,12 +163,12 @@ enum EnumWithStringReturnType: string
     case Bar = '2';
 }
 
-enum EnumWithReplacements: string
+enum EnumWithReplacements: int
 {
     use PhpEnumHelper;
 
     const REPLACEMENTS = ['_' => ' '];
 
-    case Foo_One = 'One';
-    case Bar_Two = 'Two';
+    case Foo_Bar = 1;
+    case Baz_Qux = 2;
 }
