@@ -2,6 +2,7 @@
 
 - [Installation](#installation)
 - [Usage](#usage)
+  - [Methods](#methods) 
   - [Enum without return type](#enum-without-return-type)
   - [Enum with `int` return type](#enum-with-int-return-type)
   - [Enum with `string` return type](#enum-with-string-return-type)
@@ -15,6 +16,15 @@ composer req w3lifer/php-enum-helper
 ```
 
 ## Usage
+
+### Methods
+
+``` php
+public static function getName(mixed $value, ?callable $callback = null): string
+public static function getNames(?callable $callback = null): array
+public static function getValues(): array
+public static function getSelectOptions(?callable $callback = null): array
+```
 
 ### Enum without return type
 
