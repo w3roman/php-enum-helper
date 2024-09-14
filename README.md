@@ -7,6 +7,9 @@
   - [Enum with `int` return type](#enum-with-int-return-type)
   - [Enum with `string` return type](#enum-with-string-return-type)
   - [Enum with replacements](#enum-with-replacements)
+- [Examples](#examples)
+  - [Laravel I18N](#laravel-i18n)
+  - [Yii2 I18N](#yii2-i18n)
 - [Tests](#tests)
 
 ## Installation
@@ -120,6 +123,88 @@ EnumWithReplacements::getValues(); // Returns [1, 2]
 
 EnumWithReplacements::getSelectOptions(); // Returns [1 => "Foo Bar", 2 => "Baz Qux"]
 EnumWithReplacements::getSelectOptions($callback); // Returns [1 => $callback("Foo Bar"), 2 => $callback("Baz Qux")]
+```
+
+## Examples
+
+### Laravel I18N
+
+- `app/Enums/EnumWithReplacements.php`:
+
+``` php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Enums;
+
+use w3lifer\PhpEnumHelper\PhpEnumHelper;
+
+enum EnumWithReplacements: int
+{
+    use PhpEnumHelper;
+
+    const REPLACEMENTS = ['_' => ' '];
+
+    case Foo_Bar = 1;
+    case Baz_Qux = 2;
+}
+```
+
+- `resources/lang/ru.json`:
+
+``` json
+{
+    "Foo One": "Один Два",
+    "Bar Two": "Три Четыре"
+}
+```
+
+- Anywhere:
+
+``` php
+EnumWithReplacements::getSelectOptions(fn ($name) => __($name)); // [1 => "Один Два", 2 => "Три Четыре"]
+```
+
+### Yii2 I18N
+
+- `enums/EnumWithReplacements.php`:
+
+``` php
+<?php
+
+declare(strict_types=1);
+
+namespace app\enums;
+
+use w3lifer\PhpEnumHelper\PhpEnumHelper;
+
+enum EnumWithReplacements: int
+{
+    use PhpEnumHelper;
+
+    const REPLACEMENTS = ['_' => ' '];
+
+    case Foo_Bar = 1;
+    case Baz_Qux = 2;
+}
+```
+
+- `messages/ru/app.php`:
+
+``` php
+<?php
+
+return [
+    'Foo Bar' => 'Один Два',
+    'Baz Qux' => 'Три Четыре',
+];
+```
+
+- Anywhere:
+
+``` php
+EnumWithReplacements::getSelectOptions(fn ($name) => Yii::t('app', $name)); // [1 => "Один Два", 2 => "Три Четыре"]
 ```
 
 ## Tests
