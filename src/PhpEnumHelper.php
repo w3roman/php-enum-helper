@@ -10,7 +10,7 @@ trait PhpEnumHelper
     {
         if ($value instanceof self) { // For enums without return type
             $name = $value->name;
-        } elseif (method_exists(self::class, 'from')) {
+        } elseif (method_exists(self::class, 'from')) { // Enums without return type don't have `from()` method
             $name = self::from($value)->name;
         } else { // For enums without return type
             $name = $value;
