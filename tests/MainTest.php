@@ -7,7 +7,7 @@ use w3lifer\PhpEnumHelper\PhpEnumHelper;
 
 final class MainTest extends TestCase
 {
-    public function testGetName(): void
+    public function testGetName()
     {
         // EnumWithoutReturnType
 
@@ -45,7 +45,7 @@ final class MainTest extends TestCase
         $this->assertSame('Foo Bar ☺', EnumWithReplacements::getName(1, fn (string $name) => $name .= ' ☺'));
     }
 
-    public function testGetNames(): void
+    public function testGetNames()
     {
         // EnumWithoutReturnType
 
@@ -80,7 +80,7 @@ final class MainTest extends TestCase
         $this->assertSame(['Foo Bar ☺', 'Baz Qux ☺'], EnumWithReplacements::getNames(fn (string $name) => $name .= ' ☺'));
     }
 
-    public function testGetValues(): void
+    public function testGetValues()
     {
         // EnumWithoutReturnType
 
@@ -103,7 +103,7 @@ final class MainTest extends TestCase
         $this->assertSame([1, 2], EnumWithReplacements::getValues());
     }
 
-    public function testGetSelectOptions(): void
+    public function testGetSelectOptions()
     {
         // EnumWithoutReturnType
 
