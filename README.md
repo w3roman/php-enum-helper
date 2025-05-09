@@ -210,5 +210,5 @@ EnumWithReplacements::getSelectOptions(fn ($name) => Yii::t('app', $name)); // [
 ## Tests
 
 ``` sh
-make tests
+make tests # make t
 ```
