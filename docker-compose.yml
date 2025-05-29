@@ -1,7 +1,28 @@
+
+x-defaults: &defaults
+  volumes:
+    - ./:/app
+  working_dir: /app
+  user: 1000:1000
+
 services:
+
   php8.1-cli:
     build: ./.docker/php/8.1/cli
-    volumes:
-      - ./:/app
-    working_dir: /app
-    user: 1000:1000
+    container_name: php-enum-helper-81
+    <<: *defaults
+
+  php8.2-cli:
+    build: ./.docker/php/8.2/cli
+    container_name: php-enum-helper-82
+    <<: *defaults
+
+  php8.3-cli:
+    build: ./.docker/php/8.3/cli
+    container_name: php-enum-helper-83
+    <<: *defaults
+
+  php8.4-cli:
+    build: ./.docker/php/8.4/cli
+    container_name: php-enum-helper-84
+    <<: *defaults
