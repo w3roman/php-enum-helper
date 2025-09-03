@@ -14,7 +14,7 @@
 
 ## Installation
 
-``` sh
+```sh
 composer req w3lifer/php-enum-helper
 ```
 
@@ -22,7 +22,7 @@ composer req w3lifer/php-enum-helper
 
 ### Methods
 
-``` php
+```php
 public static function getName(int|self|string $value, ?callable $callback = null): string;
 public static function getNames(?callable $callback = null): array;
 public static function getValues(): array;
@@ -31,7 +31,7 @@ public static function getSelectOptions(?callable $callback = null): array;
 
 ### Enum without return type
 
-``` php
+```php
 enum EnumWithoutReturnType
 {
     use PhpEnumHelper;
@@ -56,7 +56,7 @@ EnumWithoutReturnType::getSelectOptions($callback); // Returns ["Foo" => $callba
 
 ### Enum with `int` return type
 
-``` php
+```php
 enum EnumWithIntReturnType: int
 {
     use PhpEnumHelper;
@@ -79,7 +79,7 @@ EnumWithIntReturnType::getSelectOptions($callback); // Returns [1 => $callback("
 
 ### Enum with `string` return type
 
-``` php
+```php
 enum EnumWithStringReturnType: string
 {
     use PhpEnumHelper;
@@ -102,7 +102,7 @@ EnumWithStringReturnType::getSelectOptions($callback); // Returns [1 => $callbac
 
 ### Enum with replacements
 
-``` php
+```php
 enum EnumWithReplacements: int
 {
     use PhpEnumHelper;
@@ -131,7 +131,7 @@ EnumWithReplacements::getSelectOptions($callback); // Returns [1 => $callback("F
 
 - `app/Enums/EnumWithReplacements.php`:
 
-``` php
+```php
 <?php
 
 declare(strict_types=1);
@@ -153,7 +153,7 @@ enum EnumWithReplacements: int
 
 - `resources/lang/ru.json`:
 
-``` json
+```json
 {
     "Foo One": "Один Два",
     "Bar Two": "Три Четыре"
@@ -162,7 +162,7 @@ enum EnumWithReplacements: int
 
 - Anywhere:
 
-``` php
+```php
 EnumWithReplacements::getSelectOptions(fn ($name) => __($name)); // [1 => "Один Два", 2 => "Три Четыре"]
 ```
 
@@ -170,7 +170,7 @@ EnumWithReplacements::getSelectOptions(fn ($name) => __($name)); // [1 => "Од�
 
 - `enums/EnumWithReplacements.php`:
 
-``` php
+```php
 <?php
 
 declare(strict_types=1);
@@ -192,7 +192,7 @@ enum EnumWithReplacements: int
 
 - `messages/ru/app.php`:
 
-``` php
+```php
 <?php
 
 return [
@@ -203,12 +203,12 @@ return [
 
 - Anywhere:
 
-``` php
+```php
 EnumWithReplacements::getSelectOptions(fn ($name) => Yii::t('app', $name)); // [1 => "Один Два", 2 => "Три Четыре"]
 ```
 
 ## Tests
 
-``` sh
+```sh
 make tests # make t
 ```
