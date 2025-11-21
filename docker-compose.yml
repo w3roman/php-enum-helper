@@ -26,3 +26,8 @@ services:
     build: ./.docker/php/8.4/cli
     container_name: php-enum-helper-84
     <<: *defaults
+
+  php8.5-cli:
+    build: ./.docker/php/8.5/cli
+    container_name: php-enum-helper-85
+    <<: *defaults
